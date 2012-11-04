@@ -1,0 +1,26 @@
+description "Umpire"
+author "Chef"
+
+start on (filesystem and net-device-up)
+stop on runlevel [!2345]
+
+respawn
+respawn limit 5 30
+
+chdir <%= @dir %>
+setuid <%= @user %>
+
+script
+  export PATH=<%= @path %>:$PATH
+  export DEPLOY=production
+  export PORT=<%= @port %>
+  export FORCE_HTTPS=<%= @force_https %>
+  <% unless @api_key.empty? %>
+  export API_KEY=<%= @api_key %>
+  <% end %>
+  export GRAPHITE_URL="http://<%= @graphite_fqdn %>"
+
+  exec bundle exec ./bin/web >> <%= @log_dir %>/umpire.log 2>&1
+end script
+
+emits umpire-running

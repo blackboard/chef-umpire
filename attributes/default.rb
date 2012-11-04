@@ -1,0 +1,10 @@
+default["umpire"]["dir"]            = "/opt/umpire"
+default["umpire"]["log_dir"]        = "#{node["umpire"]["dir"]}/log"
+default["umpire"]["user"]           = "umpire"
+default["umpire"]["port"]           = 5000
+default["umpire"]["ruby_version"]   = "1.9.3-p286"
+default["umpire"]["repository"]     = "https://github.com/heroku/umpire.git"
+default["umpire"]["force_https"]    = "false"
+default["umpire"]["api_key"]        = "secret"
+default["umpire"]["graphite_role"]  = "graphite"
+default["umpire"]["graphite_fqdn"]  = ""

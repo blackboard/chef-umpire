@@ -89,7 +89,7 @@ end
 
 execute "bundle-install" do
   cwd node["umpire"]["dir"]
-  command "bundle install --deployment --path vendor"
+  command "#{ruby_bin_path}/bundle install --deployment --path vendor"
 end
 
 service "umpire" do

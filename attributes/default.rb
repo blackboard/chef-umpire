@@ -8,3 +8,4 @@ default["umpire"]["force_https"]    = "false"
 default["umpire"]["api_key"]        = "secret"
 default["umpire"]["graphite_role"]  = "graphite"
 default["umpire"]["graphite_fqdn"]  = ""
+default["umpire"]["external_script"]= false

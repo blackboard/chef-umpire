@@ -69,10 +69,13 @@ template "/etc/init/umpire.conf" do
     :api_key            => node["umpire"]["api_key"],
     :graphite_fqdn      => graphite_fqdn,
     :port               => node["umpire"]["port"],
-    :log_dir            => node["umpire"]["log_dir"]
+    :log_dir            => node["umpire"]["log_dir"],
+    :external_script    => node["umpire"]["external_script"]
   )
   notifies :restart, "service[umpire]"
 end
+
+
 
 logrotate_app "umpire" do
   cookbook "logrotate"

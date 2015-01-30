@@ -18,8 +18,9 @@ script
   <% unless @api_key.empty? %>
   export API_KEY=<%= @api_key %>
   <% end %>
-  export GRAPHITE_URL="http://<%= @graphite_fqdn %>"
-
+<% if @external_script %>
+  . <%= @dir %>/<%= @external_script %>
+<% end %>
   exec bundle exec ./bin/web >> <%= @log_dir %>/umpire.log 2>&1
 end script
 
